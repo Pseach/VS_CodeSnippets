@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>UnionFind1</Title>
+      <Author>
+      </Author>
+      <Description>朴素并查集</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>intfind1</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cpp" Delimiter="$"><![CDATA[int p[N];
+
+int find(int x){
+    if (p[x] != x) p[x] = find(p[x]);
+    return p[x];
+}
+
+$end$ // 初始化编号1~n
+for (int i = 1; i <= n; i++) p[i] = i;
+
+// 合并a和b所在集合
+p[find(a)] = find(b);]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

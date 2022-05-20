@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>exgcd</Title>
+      <Description>拓展欧几里得函数</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>intexgcd</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cpp" Delimiter="$"><![CDATA[int exgcd(int a, int b, int &x, int &y){
+    if (!b){
+        x = 1, y = 0;
+        return a;
+    }
+    int d = exgcd(b, a % b, y, x);
+    y -= a / b * x;
+    return d;
+}
+
+$end$
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

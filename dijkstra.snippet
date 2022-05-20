@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>dijkstra</Title>
+      <Author>
+      </Author>
+      <Description>dijkstra</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>intdijkstra</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>START</ID>
+          <ToolTip>起点</ToolTip>
+          <Default>1</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="cpp" Delimiter="$"><![CDATA[
+int dist[N], st[N];
+int dijkstra() {
+    memset(dist, 0x3f, sizeof(dist));
+    dist[$START$] = 0;
+
+    priority_queue<PII, vector<PII>, greater<PII> > heap;
+    heap.push({ 0, $START$ });
+
+    while (heap.size()) {
+        PII k = heap.top(); heap.pop();
+
+        int id = k.second,
+            distance = k.first;
+
+        if (st[id]) continue;
+        st[id] = true;
+        
+        for (int i = h[id]; ~i; i = ne[i]) {	
+            int j = e[i];
+            if (dist[j] > distance + w[i]) {
+                dist[j] = distance + w[i];
+                heap.push({ dist[j], j });
+            }
+        }
+    }
+    return dist[n] == 0x3f3f3f3f ? -1 : dist[n];
+}
+
+$end$
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

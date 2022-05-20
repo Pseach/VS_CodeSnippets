@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>MatchSupport</Title>
+      <Description>初始化比赛环境</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>Minit1</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cpp" Delimiter="$"><![CDATA[#include <bits/stdc++.h>
+//#pragma GCC optimize(2);
+#define IOS ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+using namespace std;
+typedef long long ll;
+typedef pair<int, int> PII;
+inline int read();
+template <typename T> void read(T& x) { x = read(); }
+template <typename T, typename ...Argv> void read(T& x, Argv &...argv) { read(x); read(argv...); }
+const int INF = 0x3f3f3f3f;
+const ll mod = 114514919810;
+const int N = 1e5 + 10;
+
+
+void solve() {
+    $end$
+}
+
+int main() {
+    int T = 1;
+    //cin >> T;
+    while (T--)
+        solve();
+    return 0;
+}
+inline int read() {
+    int x = 0, c = getchar(), f = 1;
+    while (c < '0' || c > '9') { if (c == '-') f = -f; c = getchar(); }
+    while (c >= '0' && c <= '9') x = (x << 1) + (x << 3) + (c ^ 48), c = getchar(); 
+    return x * f;
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

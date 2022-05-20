@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>WeightDigraph</Title>
+      <Description>有权图加边</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>voidadd2</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cpp" Delimiter="$"><![CDATA[int h[N], e[N], ne[N], w[N], idx;
+void add(int a, int b, int c) {
+    w[idx] = c, e[idx] = b, ne[idx] = h[a], h[a] = idx++;
+}
+memset(h, -1, sizeof h);
+
+$end$
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

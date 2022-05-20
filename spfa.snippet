@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>spfa</Title>
+      <Author>
+      </Author>
+      <Description>spfa</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>intspfa</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>START</ID>
+          <ToolTip>起点</ToolTip>
+          <Default>1</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="cpp" Delimiter="$"><![CDATA[int dist[N], st[N];
+int spfa() {
+    memset(dist, 0x3f, sizeof(dist));
+    dist[$START$] = 0;
+
+    queue<int>q;
+    q.push($START$);
+    st[$START$] = 1;
+
+    while (q.size()) {
+        int t = q.front(); q.pop();
+        st[t] = 0;
+
+        for (int i = h[t]; ~i; i = ne[i]) {
+            int j = e[i];
+            if (dist[j] > dist[t] + w[i]) {
+                dist[j] = dist[t] + w[i];
+                if (!st[j]) {
+                    q.push(j);
+                    st[j] = 1;
+                }
+            }
+        }
+    }
+    return dist[n];
+}
+
+$end$
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>StringHash</Title>
+      <Author>
+      </Author>
+      <Description>字符串哈希</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>ullget</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cpp" Delimiter="$"><![CDATA[typedef unsigned long long ull;
+const int P = 131;
+ull h[N], p[N] = { 1 };
+ull get(int l, int r){
+    return h[r] - h[l - 1] * p[r - l + 1];
+}
+
+$end$for (int i = 1; i <= n; i++){
+    h[i] = h[i - 1] * P + str[i];
+    p[i] = p[i - 1] * P;
+}
+get(l1, r1) == get(l2, r2)
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
