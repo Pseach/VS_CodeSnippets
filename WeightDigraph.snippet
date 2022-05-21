@@ -6,13 +6,24 @@
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
       <Title>WeightDigraph</Title>
+      <Author>
+      </Author>
       <Description>有权图加边</Description>
       <HelpUrl>
       </HelpUrl>
       <Shortcut>voidadd2</Shortcut>
     </Header>
     <Snippet>
-      <Code Language="cpp" Delimiter="$"><![CDATA[int h[N], e[N], ne[N], w[N], idx;
+      <Declarations>
+        <Literal Editable="true">
+          <ID>N</ID>
+          <ToolTip>N</ToolTip>
+          <Default>N</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="cpp" Delimiter="$"><![CDATA[int h[N], e[$N$], ne[$N$], w[$N$], idx;
 void add(int a, int b, int c) {
     w[idx] = c, e[idx] = b, ne[idx] = h[a], h[a] = idx++;
 }
