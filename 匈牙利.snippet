@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>匈牙利</Title>
+      <Author>
+      </Author>
+      <Description>二分图的最大匹配</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>boolfind</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cpp" Delimiter="$"><![CDATA[int st[N], match[N];
+bool find(int x) {
+    for (int i = h[x]; ~i; i = ne[i]) {
+        int j = e[i];
+        if (!st[j]) {
+            st[j] = true;
+            if (!match[j] || find(match[j])) {
+                match[j] = x;
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+$end$]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

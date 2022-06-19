@@ -5,13 +5,13 @@
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
-      <Title>CodeInit</Title>
+      <Title>Minit2</Title>
       <Author>
       </Author>
-      <Description>初始化常用操作</Description>
+      <Description>LL快读</Description>
       <HelpUrl>
       </HelpUrl>
-      <Shortcut>init</Shortcut>
+      <Shortcut>Minit2</Shortcut>
     </Header>
     <Snippet>
       <Code Language="cpp" Delimiter="$"><![CDATA[#include <bits/stdc++.h>
@@ -20,17 +20,32 @@
 using namespace std;
 typedef long long ll;
 typedef pair<int, int> PII;
+inline ll read();
+template <typename T> void read(T& x) { x = read(); }
+template <typename T, typename ...Argv> void read(T& x, Argv &...argv) { read(x); read(argv...); }
 const int INF = 0x3f3f3f3f;
 const ll mod = 1e9 + 7;
 const int N = 1e5 + 10, M = 1e6 + 10;
 
 $end$
 
-int main() {
+void solve() {
     
+}
+
+int main() {
+    int T = 1;
+    //cin >> T;
+    while (T--)
+        solve();
     return 0;
 }
-]]></Code>
+inline ll read() {
+    ll x = 0, c = getchar(), f = 1;
+    while (c < '0' || c > '9') { if (c == '-') f = -f; c = getchar(); }
+    while (c >= '0' && c <= '9') x = (x << 1) + (x << 3) + (c ^ 48), c = getchar();
+    return x * f;
+}]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>

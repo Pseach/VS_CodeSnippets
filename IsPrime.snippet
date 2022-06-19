@@ -5,23 +5,23 @@
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
-      <Title>UnionFind1</Title>
+      <Title>IsPrime</Title>
       <Author>
       </Author>
-      <Description>朴素并查集</Description>
+      <Description>判断素数</Description>
       <HelpUrl>
       </HelpUrl>
-      <Shortcut>intfind1</Shortcut>
+      <Shortcut>boolisprime</Shortcut>
     </Header>
     <Snippet>
-      <Code Language="cpp" Delimiter="$"><![CDATA[int p[N];
-int find(int x_){
-    if (p[x_] != x_) p[x_] = find(p[x_]);
-    return p[x_];
+      <Code Language="cpp" Delimiter="$"><![CDATA[bool is_prime(int n) {
+    if (n < 2)return false;
+    for (int i = 2; i <= n / i; i++) {
+        if (n % i == 0) return false;
+    }
+    return true;
 }
-$end$for (int i = 1; i <= n; i++) p[i] = i;
-
-p[find(a)] = find(b);]]></Code>
+]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>
