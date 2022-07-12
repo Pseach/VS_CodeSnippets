@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>HighPrecisionDiv</Title>
+      <Author>
+      </Author>
+      <Description>高精度除法(传入逆序)A,r&gt;=0,B&gt;0</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>vectorintdiv</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cpp" Delimiter="$"><![CDATA[vector<int> div(vector<int>& A, int b, int& r) {
+    vector<int> C;
+    r = 0;
+    for (int i = A.size() - 1; i >= 0; i--) {
+        r = r * 10 + A[i];
+        C.push_back(r / b);
+        r %= b;
+    }
+    reverse(C.begin(), C.end());
+    while (C.size() > 1 && C.back() == 0) C.pop_back();
+    return C;
+}
+for (int i = C.size() - 1; i >= 0; i--) cout << C[i];
+$end$]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

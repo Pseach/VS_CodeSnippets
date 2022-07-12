@@ -5,34 +5,28 @@
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
-      <Title>exgcd</Title>
+      <Title>forhi</Title>
       <Author>
       </Author>
-      <Description>拓展欧几里得函数</Description>
+      <Description>遍历结点</Description>
       <HelpUrl>
       </HelpUrl>
-      <Shortcut>intexgcd</Shortcut>
+      <Shortcut>for~i</Shortcut>
     </Header>
     <Snippet>
       <Declarations>
         <Literal Editable="true">
-          <ID>int</ID>
-          <ToolTip>int</ToolTip>
-          <Default>int</Default>
+          <ID>t</ID>
+          <ToolTip>t</ToolTip>
+          <Default>t</Default>
           <Function>
           </Function>
         </Literal>
       </Declarations>
-      <Code Language="cpp" Delimiter="$"><![CDATA[$int$ exgcd($int$ a, $int$ b, $int$ &x, $int$ &y){
-    if (!b){
-        x = 1, y = 0;
-        return a;
-    }
-    $int$ d = exgcd(b, a % b, y, x);
-    y -= a / b * x;
-    return d;
-}
-$end$]]></Code>
+      <Code Language="cpp" Delimiter="$"><![CDATA[for (int i = h[$t$]; ~i; i = ne[i]) {
+    int j = e[i];
+    $end$
+}]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>

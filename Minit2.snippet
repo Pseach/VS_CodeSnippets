@@ -15,8 +15,7 @@
     </Header>
     <Snippet>
       <Code Language="cpp" Delimiter="$"><![CDATA[#include <bits/stdc++.h>
-//#pragma GCC optimize(2);
-#define IOS ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+#define IOS ios::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr);
 using namespace std;
 typedef long long ll;
 typedef pair<int, int> PII;
@@ -25,15 +24,15 @@ template <typename T> void read(T& x) { x = read(); }
 template <typename T, typename ...Argv> void read(T& x, Argv &...argv) { read(x); read(argv...); }
 const int INF = 0x3f3f3f3f;
 const ll mod = 1e9 + 7;
-const int N = 1e5 + 10, M = 1e6 + 10;
+const int N = 1e6 + 10, M = 1e6 + 10;
 
 $end$
 
-void solve() {
+inline void solve() {
     
 }
 
-int main() {
+signed main() {
     int T = 1;
     //cin >> T;
     while (T--)

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>segmentTree</Title>
+      <Author>
+      </Author>
+      <Description>区间线段树</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>structTree</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+      </Declarations>
+      <Code Language="cpp" Delimiter="$"><![CDATA[struct Tree {
+    int l, r;
+    $end$
+}tr[N * 4];
+
+void pushup(int u) {
+    
+}
+
+void pushdown(int u) {
+    
+}
+
+void build(int u, int l, int r) {
+    if (l == r) tr[u] = { l, r };
+    else {
+        tr[u] = { l, r };
+        int mid = l + r >> 1;
+        build(u << 1, l, mid), build(u << 1 | 1, mid + 1, r);
+        pushup(u);
+    }
+}
+
+void modify(int u, int l, int r, int d) {
+    if (tr[u].l >= l && tr[u].r <= r) {
+        
+    }
+    else {
+        pushdown(u);
+        int mid = tr[u].l + tr[u].r >> 1;
+        if (l <= mid) modify(u << 1, l, r, d);
+        if (r > mid) modify(u << 1 | 1, l, r, d);
+        pushup(u);
+    }
+}
+
+int query(int u, int l, int r) {
+    if (tr[u].l >= l && tr[u].r <= r) {
+        return;  
+    }
+    else {
+        pushdown(u);
+        int res = 0;
+        int mid = tr[u].l + tr[u].r >> 1;
+        if (l <= mid) res = query(u << 1, l, r);
+        if (r > mid) res += query(u << 1 | 1, l, r);
+        return res;
+    }
+}
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

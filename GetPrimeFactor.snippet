@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>GetPrimeFactor</Title>
+      <Author>
+      </Author>
+      <Description>分解质因数</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>voiddivide</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cpp" Delimiter="$"><![CDATA[void divide(int x) {
+	for (int i = 2; i <= x / i; i++) {
+		if (x % i == 0) {
+			int s = 0;
+			while (x % i == 0) {
+				x /= i;
+				s++;
+			}
+			printf("%d %d\n", i, s);
+		}
+	}
+	if (x > 1) printf("%d %d\n", x, 1);
+}
+$end$]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

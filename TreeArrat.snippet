@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>TreeArrat</Title>
+      <Author>
+      </Author>
+      <Description>树状数组:第x个数加上k,查询序列前x个数的和</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>intlowbit</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cpp" Delimiter="$"><![CDATA[int tr[N];
+int lowbit(int x) { return x & -x; }
+
+void update(int x, int c) {
+    for (int i = x; i <= n; i += lowbit(i)) tr[i] += c;
+}
+
+int query(int x) {
+    int res = 0;
+    for (int i = x; i; i -= lowbit(i)) res += tr[i];
+    return res;
+}
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
