@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Kruskal</Title>
+      <Author>
+      </Author>
+      <Description>Kruskal</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>intkruskal</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cpp" Delimiter="$"><![CDATA[int n, m;
+struct Edge {
+    int a, b, w;
+    bool operator< (const Edge& W)const {
+        return w < W.w;
+    }
+}edges[M];
+
+int p[N];
+int find(int x) {
+    if (p[x] != x) p[x] = find(p[x]);
+    return p[x];
+}
+
+int kruskal() {
+    sort(edges, edges + m);
+    for (int i = 1; i <= n; i++) p[i] = i;
+    int res = 0;
+    for (int i = 0; i < m; i++) {
+        int a = edges[i].a, b = edges[i].b, w = edges[i].w;
+        a = find(a), b = find(b);
+        if (a != b) {
+            p[a] = b;
+            res += w;
+        }
+    }
+    return res;
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
