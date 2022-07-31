@@ -5,45 +5,60 @@
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
-      <Title>MatchSupport</Title>
+      <Title>FileDebug1</Title>
       <Author>
       </Author>
-      <Description>初始化比赛环境</Description>
+      <Description>造数据</Description>
       <HelpUrl>
       </HelpUrl>
-      <Shortcut>Minit1</Shortcut>
+      <Shortcut>FileDebug</Shortcut>
     </Header>
     <Snippet>
       <Code Language="cpp" Delimiter="$"><![CDATA[#include <bits/stdc++.h>
+#include <windows.h>
 #define IOS ios::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr);
-#define endl '\n'
 using namespace std;
 typedef long long ll;
 typedef pair<int, int> PII;
 inline int read();
-template <typename T> void read(T& x) { x = read(); }
+template <typename T> void read(T& x) { x = read(); } void WriteToFile();
 template <typename T, typename ...Argv> void read(T& x, Argv &...argv) { read(x); read(argv...); }
 const int INF = 0x3f3f3f3f;
-const int mod = 1e9 + 7;
+const ll mod = 1e9 + 7;
 const int N = 1e6 + 10, M = 1e6 + 10;
 
-$end$
-
-inline void solve() {
-    
+inline void solve(int T) {
+    $end$
 }
 
 signed main() {
+    WriteToFile(); freopen("CON", "w", stdout);
+    freopen("in.in", "r", stdin);
+    ULONGLONG star_time = GetTickCount64();
     int T = 1;
-    //cin >> T;
-    while (T--)
-        solve();
+    cin >> T;
+    for (int i = 1; i <= T; i++)
+        solve(i);
+    ULONGLONG end_time = GetTickCount64();
+    cout << "Runing Time：" << (end_time - star_time) / 1000 << " sec. and " << (end_time - star_time) % 1000 << " ms." << endl;
     return 0;
 }
+
+void WriteToFile() {
+    int T = 1;
+    freopen("in.in", "w", stdout);
+    cout << T << endl;
+    cout << (int)1e4 << " " << (int)1e4 << endl;
+    for (int i = 1; i <= 1e4; i++) {
+        cout << i << " " << i << endl;
+    }
+    fclose(stdout);
+}
+
 inline int read() {
     int x = 0, c = getchar(), f = 1;
     while (c < '0' || c > '9') { if (c == '-') f = -f; c = getchar(); }
-    while (c >= '0' && c <= '9') x = (x << 1) + (x << 3) + (c ^ 48), c = getchar(); 
+    while (c >= '0' && c <= '9') x = (x << 1) + (x << 3) + (c ^ 48), c = getchar();
     return x * f;
 }]]></Code>
     </Snippet>

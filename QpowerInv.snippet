@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>QpowerInv</Title>
+      <Author>快速幂逆元</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>llinv</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>ll</ID>
+          <ToolTip>ll</ToolTip>
+          <Default>ll</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="cpp" Delimiter="$"><![CDATA[inline $ll$ qmi($ll$ a, $ll$ k, int res = 1)
+{ while (k) { if (k & 1)res = ($ll$)res * a % mod; k >>= 1, a = ($ll$)a * a % mod; } return res;}
+inline $ll$ Inv($ll$ x) { return qmi(x, mod - 2$end$ll); }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Chunked</Title>
+      <Author>
+      </Author>
+      <Description>分块M=sqrt(N)</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>BLOCK1</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>int</ID>
+          <ToolTip>int</ToolTip>
+          <Default>int</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="cpp" Delimiter="$"><![CDATA[$int$ w[N], len;
+$int$ sum[M], add[M];
+#define get(i) (i - 1) / len
+void modify(int l, int r, $int$ d) {
+    if (get(l) == get(r)) 
+        for (int i = l; i <= r; i++) w[i] += d, sum[get(i)] += d;
+    else {
+        int i = l, j = r;
+        while (get(i) == get(l)) w[i] += d, sum[get(i)] += d, i++;
+        while (get(j) == get(r)) w[j] += d, sum[get(j)] += d, j--;
+        for (int k = get(i); k <= get(j); k++) sum[k] += len * d, add[k] += d;
+    }
+}
+
+$int$ query(int l, int r) {
+    $int$ res = 0;
+    if (get(l) == get(r)) 
+        for (int i = l; i <= r; i++)  res += w[i] + add[get(i)];
+    else {
+        int i = l, j = r;
+        while (get(i) == get(l)) res += w[i] + add[get(i)], i++;
+        while (get(j) == get(r)) res += w[j] + add[get(j)], j--;
+        for (int k = get(i); k <= get(j); k++) res += sum[k];
+    }
+    return res;
+}
+$end$len = sqrt(n);sum[get(i)] += w[i];]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

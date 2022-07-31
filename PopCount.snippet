@@ -5,23 +5,20 @@
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
-      <Title>UnionFind1</Title>
+      <Title>PopCount</Title>
       <Author>
       </Author>
-      <Description>朴素并查集</Description>
+      <Description>__builtin_popcount</Description>
       <HelpUrl>
       </HelpUrl>
-      <Shortcut>intfind1</Shortcut>
+      <Shortcut>popcount</Shortcut>
     </Header>
     <Snippet>
-      <Code Language="cpp" Delimiter="$"><![CDATA[int p[N];
-int find(int x){
-    if (p[x] != x) p[x] = find(p[x]);
-    return p[x];
-}
-$end$for (int i = 1; i <= n; i++) p[i] = i;
-
-p[find(a)] = find(b);]]></Code>
+      <Code Language="cpp" Delimiter="$"><![CDATA[int popcount(int x) {
+	int re = 0;
+	while (x) { if (x & 1) ++re; x >>= 1; }
+	return re;
+}]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>

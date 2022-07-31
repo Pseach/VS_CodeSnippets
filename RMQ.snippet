@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>RMQ</Title>
+      <Author>
+      </Author>
+      <Description>最大值RMQ</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>RMQ</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cpp" Delimiter="$"><![CDATA[int f[N][M];
+int Logn[N] = { 0,0,1 };
+void Log2n(int n) { for (int i = 3; i <= n; i++) { Logn[i] = Logn[i / 2] + 1; }; }
+
+void initRMQ(int n) {
+    Log2n(n);
+    for (int i = 1; i <= n; i++)f[i][0] = a[i];
+    for (int j = 1; j < M; j++)
+        for (int i = 1; i + (1 << j) - 1 <= n; i++)
+            f[i][j] = max(f[i][j - 1], f[i + (1 << (j - 1))][j - 1]);
+}
+
+int query(int l, int r) {
+    if (l > r)swap(l, r);
+    int k = Logn[r - l + 1] / Logn[2];
+    return max(f[l][k], f[r - (1 << k) + 1][k]);
+}
+$end$]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

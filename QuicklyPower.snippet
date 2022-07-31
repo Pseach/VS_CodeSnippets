@@ -6,13 +6,15 @@
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
       <Title>QuicklyPower</Title>
+      <Author>
+      </Author>
       <Description>快速幂</Description>
       <HelpUrl>
       </HelpUrl>
       <Shortcut>llqmi</Shortcut>
     </Header>
     <Snippet>
-      <Code Language="cpp" Delimiter="$"><![CDATA[ll qmi(int a, int k, int p) {
+      <Code Language="cpp" Delimiter="$"><![CDATA[ll qmi(ll a, ll k, ll p) {
     int res = 1;
     while (k) {
         if (k & 1)res = (ll)res * a % p;
@@ -21,7 +23,6 @@
     }
     return res;
 }
-
 $end$
 ]]></Code>
     </Snippet>

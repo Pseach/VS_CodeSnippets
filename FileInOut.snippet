@@ -5,23 +5,17 @@
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
-      <Title>UnionFind1</Title>
+      <Title>FileInOut</Title>
       <Author>
       </Author>
-      <Description>朴素并查集</Description>
+      <Description>文件读入以及输出</Description>
       <HelpUrl>
       </HelpUrl>
-      <Shortcut>intfind1</Shortcut>
+      <Shortcut>fileInOut</Shortcut>
     </Header>
     <Snippet>
-      <Code Language="cpp" Delimiter="$"><![CDATA[int p[N];
-int find(int x){
-    if (p[x] != x) p[x] = find(p[x]);
-    return p[x];
-}
-$end$for (int i = 1; i <= n; i++) p[i] = i;
-
-p[find(a)] = find(b);]]></Code>
+      <Code Language="cpp" Delimiter="$"><![CDATA[freopen("in.txt", "r", stdin);
+freopen("out.txt", "w", stdout);]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>
