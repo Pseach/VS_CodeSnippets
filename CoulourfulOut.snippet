@@ -5,22 +5,19 @@
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
-      <Title>UnionFind1</Title>
+      <Title>CoulourfulOut</Title>
       <Author>
       </Author>
-      <Description>朴素并查集</Description>
+      <Description>CoutEndl蓝色字体</Description>
       <HelpUrl>
       </HelpUrl>
-      <Shortcut>intfind1</Shortcut>
+      <Shortcut>ColourCout</Shortcut>
     </Header>
     <Snippet>
-      <Code Language="cpp" Delimiter="$"><![CDATA[int p[N];
-int find(int x) {
-    return p[x] != x ? p[x] = find(p[x]) : p[x];
-}
-$end$for (int i = 1; i <= n; i++) p[i] = i;
-
-p[find(a)] = find(b);]]></Code>
+      <Code Language="cpp" Delimiter="$"><![CDATA[#ifdef Local_Colour_IO
+#define cout cout << "\033[1;32m"
+#define endl "\033[0m\n"
+#endif]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>

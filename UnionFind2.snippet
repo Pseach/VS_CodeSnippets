@@ -16,9 +16,8 @@
     <Snippet>
       <Code Language="cpp" Delimiter="$"><![CDATA[//p[]存储每个点的祖宗节点, size[]只有祖宗节点的有意义，表示祖宗节点所在集合中的点的数量
 int p[N], Size[N];
-int find(int x){
-    if (p[x] != x) p[x] = find(p[x]);
-    return p[x];
+int find(int x) {
+    return p[x] != x ? p[x] = find(p[x]) : p[x];
 }
 $end$for (int i = 1; i <= n; i++)p[i] = i, Size[i] = 1;
 

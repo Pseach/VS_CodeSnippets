@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>LinkTreeSubivishion</Title>
+      <Author>
+      </Author>
+      <Description>树链剖分</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>LinkTreeSubivishion</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cpp" Delimiter="$"><![CDATA[int h[N], e[M], ne[M], w[M], idx;
+void add(int a, int b) {
+    e[idx] = b, ne[idx] = h[a], h[a] = idx++;
+}
+
+int dep[N], fa[N], son[N], size_[N];
+void dfs1(int u = 1, int father = -1, int depth = 1) {
+    dep[u] = depth, fa[u] = father, size_[u] = 1;
+    for (int i = h[u], j = e[i]; ~i; i = ne[i], j = e[i]) {
+        if (j == father) continue;
+        dfs1(j, u, depth + 1);
+        size_[u] += size_[j];
+        if (size_[son[u]] < size_[j])son[u] = j;
+    }
+}
+
+int id[N], nw[N], top[N], cnt;
+void dfs2(int u = 1, int t = 1) {
+    id[u] = ++cnt, nw[cnt] = w[u], top[u] = t;
+    if (!son[u]) return;
+    dfs2(son[u], t);
+    for (int i = h[u], j = e[i]; ~i; i = ne[i], j = e[i]) {
+        if (j == fa[u] || j == son[u]) continue;
+        dfs2(j, j);
+    }
+}
+
+struct Tree {
+    int l, r;
+    int sum, add;
+}tr[N << 2];
+
+void change(int u, int k) {
+    tr[u].sum += k * (tr[u].r - tr[u].l + 1), tr[u].add += k;
+}
+
+void pushup(int u) {
+    tr[u].sum = tr[u << 1].sum + tr[u << 1 | 1].sum;
+}
+
+void pushdown(int u) {
+    if (tr[u].add) {
+        change(u << 1, tr[u].add), change(u << 1 | 1, tr[u].add);
+        tr[u].add = 0;
+    }
+}
+
+void build(int u = 1, int l = 1, int r = n) {
+    if (l == r) tr[u] = {l, r, nw[r], 0};
+    else {
+        tr[u] = {l, r};
+        int mid = l + r >> 1;
+        build(u << 1, l, mid), build(u << 1 | 1, mid + 1, r);
+        pushup(u);
+    }
+}
+
+void update(int u, int l, int r, int d) {
+    if (tr[u].l >= l && tr[u].r <= r) change(u, d);
+    else {
+        pushdown(u);
+        int mid = tr[u].l + tr[u].r >> 1;
+        if (l <= mid) update(u << 1, l, r, d);
+        if (r > mid) update(u << 1 | 1, l, r, d);
+        pushup(u);
+    }
+}
+
+int query(int u, int l, int r) {
+    if (tr[u].l >= l && tr[u].r <= r) return tr[u].sum;
+    else {
+        pushdown(u);
+        int res = 0;
+        int mid = tr[u].l + tr[u].r >> 1;
+        if (l <= mid) res = query(u << 1, l, r);
+        if (r > mid) res += query(u << 1 | 1, l, r);
+        return res;
+    }
+}
+
+void update_path(int u, int v, int k) {
+    while (top[u] != top[v]) {
+        if (dep[top[u]] < dep[top[v]])swap(u, v);
+        update(1, id[top[u]], id[u], k);
+        u = fa[top[u]];
+    }
+    if (dep[u] < dep[v])swap(u, v);
+    update(1, id[v], id[u], k);
+}
+
+int query_path(int u, int v) {
+    int res = 0;
+    while (top[u] != top[v]) {
+        if (dep[top[u]] < dep[top[v]]) swap(u, v);
+        res += query(1, id[top[u]], id[u]);
+        u = fa[top[u]];
+    }
+    if (dep[u] < dep[v]) swap(u, v);
+    res += query(1, id[v], id[u]);
+    return res;
+}
+
+void update_tree(int u, int k) {
+    update(1, id[u], id[u] + size_[u] - 1, k);
+}
+
+int query_tree(int u) {
+    return query(1, id[u], id[u] + size_[u] - 1);
+}
+$end$memset(h, -1, sizeof h);
+dfs1(), dfs2(), build();]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

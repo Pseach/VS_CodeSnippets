@@ -14,8 +14,10 @@
       <Shortcut>fileInOut</Shortcut>
     </Header>
     <Snippet>
-      <Code Language="cpp" Delimiter="$"><![CDATA[freopen("in.txt", "r", stdin);
-freopen("out.txt", "w", stdout);]]></Code>
+      <Code Language="cpp" Delimiter="$"><![CDATA[#ifdef FILE_IO_DEBUG
+    freopen("in.txt", "r", stdin);
+    freopen("out.txt", "w", stdout);
+#endif]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>DebugOuts</Title>
+      <Author>
+      </Author>
+      <Description>调试红色输出</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>DebugOuts</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cpp" Delimiter="$"><![CDATA[#define __DEBUG
+#ifdef __DEBUG
+#define Val_Name(name) #name, name
+#define Debug(format, ...) printf ("\033[1;31mDebug: "##format##"\033[0m\n", ##__VA_ARGS__)
+#define Out(format, ...) printf ("\033[1;31m"##format##"\033[0m", ##__VA_ARGS__)
+#define OutEndl(format, ...) printf ("\033[1;31m"##format##"\033[0m\n", ##__VA_ARGS__)
+#define OutArray(Array, left, right) for (int i = left; i < right; Out("%d ", Array[i]), i++); OutEndl();
+#else
+#define Debug(format, ...)
+#define Out(format, ...)
+#define OutEndl(format, ...)
+#define OutArray(format, ...)
+#endif]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
