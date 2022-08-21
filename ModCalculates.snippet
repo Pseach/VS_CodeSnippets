@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>ModCalculates</Title>
+      <Author>
+      </Author>
+      <Description>取模运算，快速幂逆元</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>Calculate</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>int</ID>
+          <ToolTip>int</ToolTip>
+          <Default>int</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="cpp" Delimiter="$"><![CDATA[namespace Calculate {
+    inline $int$ pls($int$ a, $int$ b) { return a + b >= mod ? a + b - mod : a + b; }
+    inline $int$ mns($int$ a, $int$ b) { return a - b < 0 ? a - b + mod : a - b; }
+    inline $int$ mul($int$ a, $int$ b) { return (1LL * a * b) % mod; }
+    inline void inc($int$& a, $int$ b) { a = pls(a, b); }
+    inline void dec($int$& a, $int$ b) { a = mns(a, b); }
+    inline void tms($int$& a, $int$ b) { a = mul(a, b); }
+    inline $int$ qp($int$ x, $int$ t, $int$ res = 1) {
+        for (; t; t >>= 1, x = mul(x, x)) if (t & 1) res = mul(res, x); return res;
+    }
+    inline $int$ Inv($int$ x) { return qp(x, mod - 2LL); }
+}
+using namespace Calculate;]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

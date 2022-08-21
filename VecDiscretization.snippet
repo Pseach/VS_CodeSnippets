@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>VecDiscretization</Title>
+      <Author>
+      </Author>
+      <Description>离散化,idx(x)</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>SortIdx</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cpp" Delimiter="$"><![CDATA[sort(v.begin(), v.end());
+v.erase(unique(v.begin(), v.end()), v.end());
+auto idx = [=](int x) -> int {return lower_bound(v.begin(), v.end(), x) - v.begin() + 1; };]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -29,7 +29,7 @@ void pushdown(int u) {
     
 }
 
-void build(int u, int l, int r) {
+void build(int u = 1, int l = 1, int r = n) {
     if (l == r) tr[u] = { l, r };
     else {
         tr[u] = { l, r };
@@ -53,9 +53,7 @@ void modify(int u, int l, int r, int d) {
 }
 
 int query(int u, int l, int r) {
-    if (tr[u].l >= l && tr[u].r <= r) {
-        return;  
-    }
+    if (tr[u].l >= l && tr[u].r <= r) return;  
     else {
         pushdown(u);
         int res = 0;
@@ -65,6 +63,7 @@ int query(int u, int l, int r) {
         return res;
     }
 }
+build();
 ]]></Code>
     </Snippet>
   </CodeSnippet>

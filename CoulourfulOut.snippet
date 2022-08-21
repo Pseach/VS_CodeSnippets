@@ -14,9 +14,13 @@
       <Shortcut>ColourCout</Shortcut>
     </Header>
     <Snippet>
-      <Code Language="cpp" Delimiter="$"><![CDATA[#ifdef Local_Colour_IO
+      <Code Language="cpp" Delimiter="$"><![CDATA[#ifdef Local_Colour_Out
+#define printf(format, ...) printf ("\033[1;32m"##format##"\033[0m", ##__VA_ARGS__)
+#define puts(str) puts("\033[1;32m"##str##"\033[0m")
 #define cout cout << "\033[1;32m"
 #define endl "\033[0m\n"
+#else
+#define endl '\n'
 #endif]]></Code>
     </Snippet>
   </CodeSnippet>
