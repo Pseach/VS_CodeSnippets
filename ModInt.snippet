@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>ModInt</Title>
+      <Author>
+      </Author>
+      <Description>自定义自动取模的int类型</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>ModInt</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cpp" Delimiter="$"><![CDATA[template<int ModCount>
+struct ModInt {
+    const static int MD = ModCount;
+    int x = 0;
+    ModInt(ll x = 0) : x(x% MD) {}
+    int get() { return x; }
+    ModInt operator + (const ModInt& that) const { int x0 = x + that.x; return ModInt(x0 < MD ? x0 : x0 - MD); }
+    ModInt operator - (const ModInt& that) const { int x0 = x - that.x; return ModInt(x0 < MD ? x0 + MD : x0); }
+    ModInt operator * (const ModInt& that) const { return ModInt((long long)x * that.x % MD); }
+    ModInt operator / (const ModInt& that) const { return *this * that.inverse(); }
+    void operator += (const ModInt& that) { x += that.x; if (x >= MD) x -= MD; }
+    void operator -= (const ModInt& that) { x -= that.x; if (x < 0) x += MD; }
+    void operator *= (const ModInt& that) { x = (long long)x * that.x % MD; }
+    void operator /= (const ModInt& that) { *this = *this / that; }
+    ModInt inverse() const {
+        int a = x, b = MD, u = 1, v = 0;
+        while (b) {
+            int t = a / b;
+            a -= t * b; std::swap(a, b);
+            u -= t * v; std::swap(u, v);
+        }
+        return u < 0 ? u + MD : u;
+    }
+};
+typedef ModInt<mod> mint;]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

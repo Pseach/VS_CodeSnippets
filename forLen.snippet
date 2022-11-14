@@ -5,26 +5,21 @@
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
-      <Title>QuicklyPower</Title>
+      <Title>forLen</Title>
       <Author>
       </Author>
-      <Description>快速幂</Description>
+      <Description>枚举长度</Description>
       <HelpUrl>
       </HelpUrl>
-      <Shortcut>llqmi</Shortcut>
+      <Shortcut>forlen</Shortcut>
     </Header>
     <Snippet>
-      <Code Language="cpp" Delimiter="$"><![CDATA[ll qmi(ll a, ll k) {
-    int res = 1;
-    while (k) {
-        if (k & 1)res = res * a % mod;
-        k >>= 1;
-        a = a * a % mod;
+      <Code Language="cpp" Delimiter="$"><![CDATA[for (int len = 1; len <= n; len++) {
+    for (int i = 1; i - 1 + len <= n; i++) {
+        int j = i + len - 1;
+        $end$
     }
-    return res;
-}
-$end$
-]]></Code>
+}]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>

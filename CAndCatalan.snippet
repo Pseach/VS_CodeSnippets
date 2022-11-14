@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>CAndCatalan</Title>
+      <Author>
+      </Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>CCatalan</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="cpp" Delimiter="$"><![CDATA[ll MaxN = N - 5;
+ll Catalan[N] = {1}, fac[2 * N] = {1}, ifac[N], inv[N];
+ll qmi(ll a, int b) {
+    ll res = 1;
+    while (b) {
+        if (b & 1) res = res * a % mod;
+        a = a * a % mod;
+        b >>= 1;
+    }
+    return res;
+}
+
+void init() {
+    for (int i = 1; i <= 2 * MaxN; i++) fac[i] = fac[i - 1] * i % mod;
+    ifac[MaxN] = qmi(fac[MaxN], mod - 2); //阶乘逆元
+    for (int i = MaxN; i >= 2; i--) ifac[i - 1] = ifac[i] * i % mod; //阶乘倒数逆元
+    for (int i = 1; i <= MaxN; i++) inv[i] = fac[i - 1] * ifac[i] % mod; //倒数逆元
+    for (int i = 0; i < MaxN; i++) Catalan[i + 1] = Catalan[i] * (4LL * i + 2) % mod * inv[i + 2] % mod; //计算卡特兰数
+}
+
+ll C(ll n, ll m) { //n选m
+    return fac[n] * ifac[m] % mod * ifac[n - m] % mod;
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
